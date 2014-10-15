@@ -39,10 +39,10 @@
 }
 
 #result_page{
-	top: 200px;
+	top: 100px;
 	color:white;
-	font-size: 20px;
-	text-align: center;
+	font-size: 50px;
+	text-align: left;
 }
 
 .right_page{

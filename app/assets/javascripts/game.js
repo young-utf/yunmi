@@ -2,6 +2,28 @@ window.onload = function(){
 	$('.wrapper').css('height',$(window).height());
 }
 
+var toggle = true;
+var a1 = 43798;
+function chgCol(){
+	if(toggle){ 
+		a1 += 1;
+	}else{
+		a1 -= 1;
+	}
+	if(a1>44031) toggle = false;
+	if(a1<43793) toggle = true;
+
+
+
+	$('.wrapper').css('background','#1D'+a1.toString(16));
+
+}
+
+window.onload = function(){
+	$('.wrapper').css('height',$(window).height());
+	setInterval(chgCol,30);
+}
+
 function getNum(){
 	number =  Math.floor(Math.random()*9999);
 	number = number.toString();
@@ -57,6 +79,7 @@ function report(){
 	var answer = $('.number').val();
 	var error = document.getElementById('error');
 	var result_page = document.getElementById('result_page');
+	var text = document.getElementById('text');
 
 	console.log(typeof answer);
 	console.log(answer);
@@ -89,23 +112,46 @@ function report(){
 		}	
 	}
 
+	error.innerHTML = '';
+
 	var getAnswer = getCount(answer);
 
 	var div = document.createElement('div');
 	div.id = "result_div"+count;
 	div.innerHTML = answer+'      '+getAnswer.ball+'b'+getAnswer.str+'s';
 	result_page.appendChild(div);
+	$('#result_div'+count).slideUp('slow');
+
+
 	count++;
 	if(getAnswer.str == 4){
 		$('#result_page').empty();
 		$('.report').css('display','none');
 		$('#onemore').css('display','block');
-		result_page.innerHTML = "콩그레츄레이셔언 ~~ !! "
+		result_page.innerHTML = "콩그레츄레이셔언 ~~ !! ";
+		$("#result_page").slideUp();
+
 	}
 
 	if(count > 15){
 		$('#result_page').empty();
-		result_page.innerHTML = "장난치는거지....? ? "
-		location.reload();
+		result_page.innerHTML = "장난치는거지....? ? ";
+
+		setTimeout(function(){location.reload()},3000);
+		
 	}
+
+	text.value = '';
+	text.onfocus();
+
+
 }
+$(document).keypress(function(e){
+    if (e.which == 13){
+        report();
+    }
+});
+$("button").click(function(){
+	alert('dd');
+  $("body").slideUp();
+});
