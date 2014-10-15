@@ -1,5 +1,11 @@
 window.onload = function(){
+	//alert('dd');
 	$('.wrapper').css('height',$(window).height());
+
+	var now = new Date();
+	var time = document.getElementById('time');
+	time.innerHTML = now.getHours()+' : '+now.getMinutes() + ' : ' +now.getSeconds();
+	console.log(now.getHours());
 }
 
 var toggle = true;
@@ -115,25 +121,28 @@ function report(){
 	error.innerHTML = '';
 
 	var getAnswer = getCount(answer);
+	count++;
 
 	var div = document.createElement('div');
 	div.id = "result_div"+count;
-	div.innerHTML = answer+'      '+getAnswer.ball+'b'+getAnswer.str+'s';
+	div.innerHTML = count +'. '+ answer+'      '+getAnswer.ball+'b'+getAnswer.str+'s';
 	result_page.appendChild(div);
-	$('#result_div'+count).slideUp('slow');
+	$('#result_div'+count).css('display','none'); 
+	$('#result_div'+count).slideDown('slow');
 
 
-	count++;
+	
 	if(getAnswer.str == 4){
 		$('#result_page').empty();
 		$('.report').css('display','none');
 		$('#onemore').css('display','block');
 		result_page.innerHTML = "콩그레츄레이셔언 ~~ !! ";
-		$("#result_page").slideUp();
+		$("#result_page").css('display','none');
+		$("#result_page").fadeIn('slow');
 
 	}
 
-	if(count > 15){
+	if(count > 10){
 		$('#result_page').empty();
 		result_page.innerHTML = "장난치는거지....? ? ";
 
