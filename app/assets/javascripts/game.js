@@ -1,42 +1,27 @@
-// var a1 = 14;
-// var a2 = 15;
-// var a3 = 15;
-// var a4 = 15;
-// var toggle1 = false;
-// var toggle2 = false;
-// var toggle3 = false;
-// var toggle4 = false;
-// function chgCol(){
-// 	console.log();
-	
-// 	if(a1>15) toggle1=false;
-// 	if(a1<10) toggle1=true;
+	var toggle = true;
+	var a1 = 43798;
+function chgCol(){
+	if(toggle){ 
+		a1 += 1;
+		console.log('true');
+	}else{
+		a1 -= 1;
+		console.log('false');
+	}
+	console.log(a1);
 
-// 	if(a2>16) toggle2=false;
-// 	if(a2<11) toggle2=true;
-
-// 	if(a3>16) toggle3=false;
-// 	if(a3<1) toggle3=true;
-
-// 	if(a4>16) toggle4=false;
-// 	if(a4<6) toggle4=true;
-
-// 	if(toggle1) a1++;
-// 	else a1--;
-// 	if(toggle2) a2++;
-// 	else a2--;
-// 	if(toggle3) a3++;
-// 	else a3--;
-// 	if(toggle4) a4++;
-// 	else a4--;
+	if(a1>44031) toggle = false;
+	if(a1<43793) toggle = true;
 
 
-// 	$('.wrapper').css('background','#1D'+a1.toString(16)+a2.toString(16)+a3.toString(16)+a4.toString(16));
-// }
+
+	$('.wrapper').css('background','#1D'+a1.toString(16));
+
+}
 
 window.onload = function(){
 	$('.wrapper').css('height',$(window).height());
-	//setInterval(chgCol,2000);
+	setInterval(chgCol,30);
 }
 
 function getNum(){
